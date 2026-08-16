@@ -1,7 +1,7 @@
-Name: Robot Búsqueda Diaria
+name: Robot Búsqueda Diaria
 
 on:
-
+  schedule:
     - cron: '0 */2 * * *'
   workflow_dispatch:
 
@@ -9,7 +9,7 @@ jobs:
   ejecutar:
     runs-on: ubuntu-latest
     permissions:
-      contents: write 
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -30,6 +30,6 @@ jobs:
         run: |
           git config --global user.name "RobotChollos"
           git config --global user.email "robot@chollos.com"
-          git add historial_precios.json chollos.json
+          git add historial_precios.json chollos.json || true
           git commit -m "Actualización de ofertas [skip ci]" || exit 0
           git push
