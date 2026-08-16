@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Panel Privado de Chollos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 p-6">
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-3xl font-extrabold text-slate-800 mb-6">🔥 Chollos Detectados Hoy</h1>
+    <div id="contenedor" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <p class="text-gray-500">Cargando chollos...</p>
+    </div>
+  </div>
+
+  <script>
+    async function mostrarChollos() {
+      try {
+        const respuesta = await fetch('chollos.json');
+        const lista = await respuesta.json();
+        const contenedor = document.getElementById('contenedor');
+        
+        contenedor.innerHTML = lista.map(item => `
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <span class="bg-slate-100 text-slate-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase">${item.tienda}</span>
+                ${item.es_minimo ? '<span class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-md">MÍNIMO HISTÓRICO</span>' : ''}
+              </div>
+              <h2 class="font-bold text-slate-900 mb-4">${item.titulo}</h2>
+              
+              <div class="bg-slate-50 rounded-xl p-3 mb-4 space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Precio Hoy:</span>
+                  <span class="font-extrabold text-blue-600 text-lg">${item.precio_actual} €</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Precio Anterior:</span>
+                  <span class="line-through text-slate-400">${item.precio_anterior} €</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Mínimo Histórico:</span>
+                  <span class="font-semibold text-slate-700">${item.minimo_historico} €</span>
+                </div>
+              </div>
+            </div>
+            
+            <a href="${item.url}" target="_blank" class="block text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl transition">
+              Ir al producto
+            </a>
+          </div>
+        `).join('');
+      } catch (e) {
+        document.getElementById('contenedor').innerHTML = '<p class="text-gray-500">El rastreador se ejecutará pronto para mostrar los primeros datos.</p>';
+      }
+    }
+    mostrarChollos();
+  </script>
+</body>
+</html>
