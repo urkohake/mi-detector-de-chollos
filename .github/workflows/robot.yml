@@ -1,15 +1,15 @@
 Name: Robot Búsqueda Diaria
 
 on:
-  schedule:
-    - cron: '0 */2 * * *'  # Cambiado a cada 2 horas (ver explicación abajo)
+
+    - cron: '0 */2 * * *'
   workflow_dispatch:
 
 jobs:
   ejecutar:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # <--- ESTO ES LO QUE FALTABA PARA PODER HACER GIT PUSH
+      contents: write 
     steps:
       - uses: actions/checkout@v4
 
