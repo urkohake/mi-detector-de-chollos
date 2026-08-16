@@ -1,0 +1,35 @@
+[
+    {
+        "id": "pcc_01",
+        "titulo": "Portátil PcComponentes en Oferta",
+        "tienda": "PcComponentes",
+        "url": "https://www.pccomponentes.com/portatiles",
+        "precio_actual": 499.0,
+        "precio_anterior": 598.8,
+        "minimo_historico": 499.0,
+        "es_minimo": true,
+        "descuento": 17
+    },
+    {
+        "id": "mm_01",
+        "titulo": "Compra productos electrónicos, tendencias y tecnología en la tienda online",
+        "tienda": "MediaMarkt",
+        "url": "https://www.mediamarkt.es/es/category/televisores-142.html",
+        "precio_actual": 27.25,
+        "precio_anterior": 32.7,
+        "minimo_historico": 27.25,
+        "es_minimo": true,
+        "descuento": 17
+    },
+    {
+        "id": "opc_01",
+        "titulo": "Outlet PC",
+        "tienda": "Outlet PC",
+        "url": "https://outlet-pc.es/",
+        "precio_actual": 199.0,
+        "precio_anterior": 238.8,
+        "minimo_historico": 199.0,
+        "es_minimo": true,
+        "descuento": 17
+    }
+]
