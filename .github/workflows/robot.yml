@@ -1,0 +1,31 @@
+name: Robot Búsqueda Diaria
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  ejecutar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Instalar herramientas
+        run: pip install requests beautifulsoup4
+
+      - name: Buscar ofertas
+        run: python tracker.py
+
+      - name: Guardar resultados
+        run: |
+          git config --global user.name "RobotChollos"
+          git config --global user.email "robot@chollos.com"
+          git add historial_precios.json chollos.json
+          git commit -m "Actualización de ofertas" || exit 0
+          git push
