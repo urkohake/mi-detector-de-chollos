@@ -5,10 +5,10 @@
         "tienda": "PcComponentes",
         "url": "https://www.pccomponentes.com/portatiles",
         "precio_actual": 499.0,
-        "precio_anterior": 598.8,
+        "precio_anterior": 499.0,
         "minimo_historico": 499.0,
         "es_minimo": true,
-        "descuento": 17
+        "descuento": 0
     },
     {
         "id": "mm_01",
@@ -16,10 +16,10 @@
         "tienda": "MediaMarkt",
         "url": "https://www.mediamarkt.es/es/category/televisores-142.html",
         "precio_actual": 27.25,
-        "precio_anterior": 32.7,
+        "precio_anterior": 27.25,
         "minimo_historico": 27.25,
         "es_minimo": true,
-        "descuento": 17
+        "descuento": 0
     },
     {
         "id": "opc_01",
@@ -27,9 +27,9 @@
         "tienda": "Outlet PC",
         "url": "https://outlet-pc.es/",
         "precio_actual": 199.0,
-        "precio_anterior": 238.8,
+        "precio_anterior": 199.0,
         "minimo_historico": 199.0,
         "es_minimo": true,
-        "descuento": 17
+        "descuento": 0
     }
 ]
