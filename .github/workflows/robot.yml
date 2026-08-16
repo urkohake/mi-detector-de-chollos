@@ -1,13 +1,15 @@
-name: Robot Búsqueda Diaria
+Name: Robot Búsqueda Diaria
 
 on:
   schedule:
-  - cron: '*/10 * * * *'
+    - cron: '0 */2 * * *'  # Cambiado a cada 2 horas (ver explicación abajo)
   workflow_dispatch:
 
 jobs:
   ejecutar:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # <--- ESTO ES LO QUE FALTABA PARA PODER HACER GIT PUSH
     steps:
       - uses: actions/checkout@v4
 
@@ -28,6 +30,6 @@ jobs:
         run: |
           git config --global user.name "RobotChollos"
           git config --global user.email "robot@chollos.com"
-          git add historial_precios.json chollos.json || true
-          git commit -m "Actualización diaria de ofertas [skip ci]" || exit 0
-          git push || true
+          git add historial_precios.json chollos.json
+          git commit -m "Actualización de ofertas [skip ci]" || exit 0
+          git push
